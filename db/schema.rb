@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130228093827) do
-
-  create_table "leaves", :force => true do |t|
-    t.text     "leave_text",                               :null => false
-    t.integer  "remain_days", :limit => 1, :default => 15, :null => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130228131048) do
 
   create_table "users", :force => true do |t|
     t.string   "email",      :limit => 50, :null => false
@@ -28,5 +21,17 @@ ActiveRecord::Schema.define(:version => 20130228093827) do
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+
+  create_table "vacations", :force => true do |t|
+    t.text     "leave_text",                               :null => false
+    t.integer  "remain_days", :limit => 1, :default => 15, :null => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "vacations", ["user_id"], :name => "index_vacations_on_user_id"
 
 end
