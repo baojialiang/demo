@@ -1,1 +1,27 @@
-<%= @a%>
+<div>
+	<h2>Vacations list</h2>
+	
+	<table>
+		<tr>
+			<th>Name</th>
+			<th>Request hours</th>
+			<th>Remain hours</th>
+			<th>Submit time</th>
+			<th>Actions</th>
+		</tr>
+		<% @vacations.each do |vacation|%>
+		<tr>
+			<td><%= vacation.user.first_name + " " + vacation.user.last_name  %></td>
+			<td><%= vacation.request_hours %></td>
+			<td><%= vacation.remain_hours %></td>
+			<td><%= vacation.created_at.to_s(:db) %></td>
+			<td>
+				<%= link_to("Show", {:controller => "vacation", :action => 'show', :id => vacation.id})%>
+				<%= link_to("Edit", {:action => 'show', :id => vacation.id})%>
+				<%= link_to("Delete", {:action => 'show', :id => vacation.id})%>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	
+</div>
