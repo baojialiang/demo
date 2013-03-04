@@ -1,6 +1,6 @@
 <div>
 	<h2>Vacations list</h2>
-	
+	<div><%= link_to("create a new vacation request", {:action => "new"})	%></div>
 	<table>
 		<tr>
 			<th>Name</th>
@@ -17,7 +17,7 @@
 			<td><%= vacation.created_at.to_s(:db) %></td>
 			<td>
 				<%= link_to("Show", {:controller => "vacation", :action => 'show', :id => vacation.id})%>
-				<%= link_to("Edit", {:action => 'show', :id => vacation.id})%>
+				<%= link_to("Edit", {:action => 'edit', :id => vacation.id})%>
 				<%= link_to("Delete", {:action => 'show', :id => vacation.id})%>
 			</td>
 		</tr>
