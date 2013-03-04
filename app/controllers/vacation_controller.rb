@@ -20,4 +20,13 @@ class VacationController < ApplicationController
     @vacation = Vacation.new
   end
   
+  def create
+    @vacation = Vacation.new(params[:vacation])
+    if @vacation.save
+      redirect_to(:action => "list")
+    else
+      render("new")
+    end
+  end
+  
 end

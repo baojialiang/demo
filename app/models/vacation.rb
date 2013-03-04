@@ -4,7 +4,7 @@ class Vacation < ActiveRecord::Base
   
   attr_accessible :leave_text, :remain_hours, :request_hours
   
-  # v = Vacation.new(:leave_text => "hello", :remain_hours => 20, :leave_hours => 10)
+  # v = Vacation.new(:leave_text => "hello", :remain_hours => 20, :request_hours => 10)
   
   
   

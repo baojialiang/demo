@@ -1,0 +1,22 @@
+<div>
+	<h2>user list</h2>
+	
+	<table>
+		<tr>
+			<th>email</th>
+			<th>first name</th>
+			<th>last name</th>
+			<th>create time</th>
+			
+		</tr>
+		<% @users.each do |user|%>
+		<tr>
+			<td><%= user.email  %></td>
+			<td><%= user.first_name %></td>
+			<td><%= user.last_name %></td>
+			<td><%= user.created_at.to_s(:db) %></td>
+		</tr>
+		<% end %>
+	</table>
+	
+</div>

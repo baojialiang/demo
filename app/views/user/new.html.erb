@@ -1,0 +1,29 @@
+<%= link_to("<< Back to List", {:controller => "user", :action => "list"})%>
+
+<div>
+	<h2>Register user</h2>
+	<%= form_for(:user, :url => {:action => "create"}) do |f|	%>
+		<table>
+			<tr>
+				<th>email</th>
+				<td> <%= text_field(:user ,:email) %></td>
+			</tr>
+			<tr>
+				<th>first_name</th>
+				<td> <%= text_field(:user ,:first_name) %></td>
+			</tr>
+			<tr>
+			
+			<th>last_name</th>
+				<td> <%= text_field(:user ,:last_name) %></td>
+			</tr>	
+			<th>password</th>
+				<td> <%= password_field(:user ,:password, :size => 20, :maxlength => 10) %></td>
+			</tr>	
+
+		</table>
+		
+		<div>
+			<%= submit_tag("Register")%>
+		</div>
+	<% end %>
