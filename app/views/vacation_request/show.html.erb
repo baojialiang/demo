@@ -1,0 +1,34 @@
+
+<%= link_to("<< back to list", {:action => "list"})%>
+
+<div>Show Vacation</div>
+<div>
+	<table>
+		<tr>
+			<th>Name</th>
+			<td> <%= @vacation_request.user.first_name + " " + @vacation_request.user.last_name %></td>
+		</tr>
+		<tr>
+			<th>Request hours</th>
+			<td><%= @vacation_request.request_hours %></td>
+		</tr>
+		<tr>
+			<th>Remain hours</th>
+			<td><%= @vacation_request.remain_hours	%></td>
+		</tr>
+		<tr>
+			<th>Created at</th>
+			<td><%=	@vacation_request.created_at.to_s(:db)	%></td>
+		</tr>
+		<% if @vacation_request.created_at.to_s(:db) != @vacation_request.updated_at.to_s(:db) %>
+		<tr>
+			<th>Updated at</th>
+			<td><%=	@vacation_request.updated_at.to_s(:db)	%></td>
+		</tr>
+		<% end %>
+		<tr>
+			<th>content</th>
+			<td><%=	@vacation_request.leave_text	%></td>
+		</tr>
+	</table>
+</div>

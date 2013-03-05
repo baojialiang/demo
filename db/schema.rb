@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304145422) do
+ActiveRecord::Schema.define(:version => 20130305090711) do
 
   create_table "users", :force => true do |t|
     t.string   "email",      :limit => 50, :null => false
@@ -24,13 +24,22 @@ ActiveRecord::Schema.define(:version => 20130304145422) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
-  create_table "vacations", :force => true do |t|
-    t.text     "leave_text",                                  :null => false
-    t.integer  "remain_hours",  :limit => 2, :default => 120, :null => false
-    t.datetime "created_at",                                  :null => false
-    t.datetime "updated_at",                                  :null => false
+  create_table "vacation_requests", :force => true do |t|
+    t.text     "leave_text",                 :null => false
+    t.integer  "request_hours", :limit => 2, :null => false
+    t.integer  "remain_hours",  :limit => 2, :null => false
     t.integer  "user_id"
-    t.integer  "request_hours", :limit => 2,                  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "vacation_requests", ["user_id"], :name => "index_vacation_requests_on_user_id"
+
+  create_table "vacations", :force => true do |t|
+    t.integer  "remain_hours", :limit => 2, :default => 120, :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "user_id"
   end
 
   add_index "vacations", ["user_id"], :name => "index_vacations_on_user_id"

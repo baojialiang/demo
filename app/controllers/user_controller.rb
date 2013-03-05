@@ -12,6 +12,8 @@ class UserController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+    @user.vacation = Vacation.new
+    
     if @user.save
       flash[:notice] = "user successfully registered"
       redirect_to(:action => "list")

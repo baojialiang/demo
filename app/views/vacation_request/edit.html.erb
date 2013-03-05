@@ -1,0 +1,44 @@
+
+<%= link_to("<< Back to List", {:controller => "vacation_request", :action => "list"})%>
+
+<div>
+	<h2>edit vacation request</h2>
+	<%= form_for(:vacation_request, :url => {:action => "update", :id => @vacation_request.id}) do |f|	%>
+		<table>
+			<tr>
+				<th>email</th>
+				<td> <%= text_field(:user ,:email) %></td>
+			</tr>
+			<tr>
+				<th>first_name</th>
+				<td> <%= text_field(:user ,:first_name) %></td>
+			</tr>
+			<tr>
+			
+			<th>last_name</th>
+				<td> <%= text_field(:user ,:last_name) %></td>
+			</tr>	
+			<th>password</th>
+				<td> <%= password_field(:user ,:password, :size => 20, :maxlength => 10) %></td>
+			</tr>	
+			<tr>
+				<th>request_hours</th>
+				<td> <%= f.text_field(:request_hours) %></td>
+			</tr>
+			<tr>
+				<th>remain hours</th>
+				<td> <%= text_field(:vacation_request,:remain_hours) %></td>
+			</tr>
+			<tr>
+				<th>content</th>
+				<td><%= f.text_area(:leave_text, :size => "40 * 40") %></td>
+			</tr>
+		</table>
+		
+		<div>
+			<%= submit_tag("update Vacation Request")%>
+		</div>
+	<% end %>
+
+	
+</div>
