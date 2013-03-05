@@ -22,14 +22,14 @@ class VacationRequestController < ApplicationController
   end
   
   def create
-    @vacation_requests = VacationRequest.new(params[:vacation_request])
+    vacation_request = VacationRequest.new(params[:vacation_request])
     user = User.find_by_email(User.new(params[:user]).email)
-    @vacation_requests.user = user
-    if @vacation_requests.save
+    user.vacation_requests << vacation_request
+    if user.save
       flash[:notice] = "vacation successfully requested"
       redirect_to(:action => "list")
     else
-      flash[:notice] = "vacation cannot be requested now, please try again"
+      flash[:error] = "vacation cannot be requested now, please try again"
       render("new")
     end
   end
@@ -40,11 +40,11 @@ class VacationRequestController < ApplicationController
   
   def update
     @vacation_request = VacationRequest.find(params[:id])
-    if @vacation_request.update_attributes(params[:vacation])
+    if @vacation_request.update_attributes(params[:vacation_request])
       flash[:notice] = "vacation successfully updated"
-      redirect_to(:action => "show", :id => @vacation_requests.id)
+      redirect_to(:action => "show", :id => @vacation_request.id)
     else
-      flash[:notice] = "vacation cannot be updated now, please try again"
+      flash[:error] = "vacation cannot be updated now, please try again"
       render("edit")
     end
   end

@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>admin</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "vacation_request", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -12,10 +13,15 @@
 </div>
 <div id="main">
 	<% if !flash[:notice].blank? %>
-		<div class = "notice"><%= flash[:notice] %></div>
+		<div class = "notice"><p class="text-success"><%= flash[:notice] %></p></div>
+	<% elsif !flash[:error].blank? %>
+		<div class = "notice"><p class="text-error"><%= flash[:error] %></p></div>
 	<% end %>
-	<div id="content">
-		<%= yield %>
+	<div class="container-fluid" id="content">
+		<div class="row-fluid">
+			<div class="span2"><!-- sidebar stuff --></div>
+			<div class="span10"><%= yield %></div>
+		</div>
 	</div>
 </div>
 <div id="footer">
