@@ -4,7 +4,7 @@ class VacationRequestController < ApplicationController
   def index
     
     list
-    render("list", :layout => "application")
+    render("list", :layout => "admin")
   end
   
   def list
@@ -13,7 +13,7 @@ class VacationRequestController < ApplicationController
   end
   
   def show
-    @vacation_request = VacationRequest.find(params[:id]) 
+    @vacation_request = VacationRequest.find_by_id(params[:id]) 
     
   end
   
@@ -26,10 +26,10 @@ class VacationRequestController < ApplicationController
     user = User.find_by_email(User.new(params[:user]).email)
     user.vacation_requests << vacation_request
     if user.save
-      flash[:notice] = "vacation successfully requested"
+      flash[:notice_info] = "vacation successfully requested"
       redirect_to(:action => "list")
     else
-      flash[:error] = "vacation cannot be requested now, please try again"
+      flash[:notice_error] = "vacation cannot be requested now, please try again"
       render("new")
     end
   end
@@ -41,10 +41,10 @@ class VacationRequestController < ApplicationController
   def update
     @vacation_request = VacationRequest.find(params[:id])
     if @vacation_request.update_attributes(params[:vacation_request])
-      flash[:notice] = "vacation successfully updated"
+      flash[:notice_info] = "vacation successfully updated"
       redirect_to(:action => "show", :id => @vacation_request.id)
     else
-      flash[:error] = "vacation cannot be updated now, please try again"
+      flash[:notice_error] = "vacation cannot be updated now, please try again"
       render("edit")
     end
   end
@@ -52,7 +52,7 @@ class VacationRequestController < ApplicationController
   def delete
     @vacation_request = VacationRequest.find(params[:id])
     @vacation_request.destroy
-    flash[:notice] = "deleted successfully"
+    flash[:notice_info] = "deleted successfully"
     redirect_to(:action => "list")
   end
   
