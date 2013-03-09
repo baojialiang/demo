@@ -15,15 +15,21 @@ class UserController < ApplicationController
     @user.vacation = Vacation.new
     
     if @user.save
-      flash[:notice] = "user successfully registered"
+      flash[:notice_info] = "user successfully registered"
       redirect_to(:action => "list")
     else
+      display_error_message @user
       render("new")
     end
   end
   
   def list
     @users = User.all
+  end
+  
+  def register
+    new
+    render("new")
   end
   
 end

@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305090711) do
+ActiveRecord::Schema.define(:version => 20130309120147) do
 
   create_table "users", :force => true do |t|
-    t.string   "email",      :limit => 50, :null => false
-    t.string   "password",   :limit => 20, :null => false
-    t.string   "first_name", :limit => 50, :null => false
-    t.string   "last_name",  :limit => 50, :null => false
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "email",           :limit => 50, :null => false
+    t.string   "hashed_password", :limit => 80, :null => false
+    t.string   "first_name",      :limit => 50, :null => false
+    t.string   "last_name",       :limit => 50, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
