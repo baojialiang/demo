@@ -16,7 +16,7 @@ class UserController < ApplicationController
     
     if @user.save
       flash[:notice_info] = "user successfully registered, login please"
-      redirect_to(:controller => "access", :action => "list")
+      redirect_to(:controller => "access", :action => "login")
     else
       display_error_message @user
       render("new")
