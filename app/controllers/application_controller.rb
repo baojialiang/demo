@@ -11,4 +11,23 @@ class ApplicationController < ActionController::Base
     flash[:notice_error] = error_list
   end
   
+  def current_page
+      page = params[:page]
+      if page.blank?
+        page = 1
+      end
+      return page.to_i
+  end
+  
+  protected
+  def confirm_logged_in
+    unless session[:user_id]
+      flash[:notice_info] = "Please log in"
+      redirect_to(:action => 'login')
+      return false
+    else 
+      return true
+    end
+  end
+  
 end

@@ -3,28 +3,31 @@
 <% end %>
 
 
-<%= link_to("<< Back to List", {:controller => "user", :action => "list"})%>
+<%= link_to("<< Back to login", {:controller => "access", :action => "login"})%>
 
 <div>
 	<h2>Register user</h2>
 	<%= form_for(:user, :url => {:action => "create"}) do |f|	%>
-		<table>
+		<table class="table">
 			<tr>
-				<th>email</th>
+				<th>Email</th>
 				<td> <%= text_field(:user ,:email) %></td>
 			</tr>
 			<tr>
-				<th>first_name</th>
+				<th>First Name</th>
 				<td> <%= text_field(:user ,:first_name) %></td>
 			</tr>
 			<tr>
 			
-			<th>last_name</th>
+			<th>Last Name</th>
 				<td> <%= text_field(:user ,:last_name) %></td>
 			</tr>	
-			<th>password</th>
+			<th>Password</th>
 				<td> <%= password_field(:user ,:password, :size => 20, :maxlength => 10) %></td>
 			</tr>	
+			<th>Password again</th>
+				<td> <%= password_field(:user ,:password_confirmation, :size => 20, :maxlength => 10) %></td>
+			</tr>
 
 		</table>
 		
@@ -32,3 +35,4 @@
 			<%= submit_tag("Register")%>
 		</div>
 	<% end %>
+</div>

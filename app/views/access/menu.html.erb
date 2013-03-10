@@ -1,6 +1,10 @@
 <% @page_title = "menu" %>
+
+<% content_for :left_bar do %>  
+	<%= render(:partial => "layouts/leftBar")%>
+<% end %>
+
 <div class="menu">
-	
 	<ul>
 		<li><%=	link_to("my vacation record", :controller => "vacation")	%></li>
 		<li><%=	link_to("my vacation request record", :controller => "vacation_request")	%></li>

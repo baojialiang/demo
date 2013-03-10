@@ -1,0 +1,7 @@
+ <ul class="pager">
+  <%= pre_pagination_tag(@page, "vacation_request", "list") %>
+  <li class="current_page">
+  	<%= @page %>
+  </li>
+  <%= next_pagination_tag(@page_num, @page, "vacation_request", "list") %>
+</ul>

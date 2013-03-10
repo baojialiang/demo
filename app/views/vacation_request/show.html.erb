@@ -1,5 +1,9 @@
 <% @page_title = "Vacation Request Display" %>
 
+<% content_for :left_bar do %>  
+	<%= render(:partial => "layouts/leftBar")%>
+<% end %>
+
 <%= link_to("<< back to list", {:action => "list"})%>
 
 <h3>Vacation Request</h3>

@@ -1,14 +1,21 @@
 class VacationRequestController < ApplicationController
-    layout "admin"
+  layout "admin"
   
-  def index
-    
+  before_filter :confirm_logged_in
+  
+  def index   
     list
     render("list", :layout => "admin")
   end
   
   def list
-    @vacation_requests = VacationRequest.all
+    display_num = 10
+    @page = current_page
+    @page_num = ((VacationRequest.where(:user_id => session[:user_id]).count).to_f / display_num).ceil
+    @vacation_requests = VacationRequest.where(:user_id => session[:user_id])
+                        .order("created_at DESC")
+                        .offset(display_num * (@page - 1))
+                        .limit(display_num)
     #render :action => "list", :layout => "application"
   end
   
@@ -23,13 +30,13 @@ class VacationRequestController < ApplicationController
   
   def create
     vacation_request = VacationRequest.new(params[:vacation_request])
-    user = User.find_by_email(User.new(params[:user]).email)
-    user.vacation_requests << vacation_request
-    if user.save
-      flash[:notice_info] = "vacation successfully requested"
+    user = User.find(session[:user_id])
+    vacation_request.user = user
+    if vacation_request.save
+      flash[:notice_info] = "vacation requested"
       redirect_to(:action => "list")
     else
-      flash[:notice_error] = "vacation cannot be requested now, please try again"
+      flash[:notice_error] = "vacation cannot be requested now, try again later"
       render("new")
     end
   end
@@ -55,5 +62,5 @@ class VacationRequestController < ApplicationController
     flash[:notice_info] = "deleted successfully"
     redirect_to(:action => "list")
   end
-  
+
 end

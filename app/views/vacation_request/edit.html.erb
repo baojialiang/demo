@@ -1,5 +1,9 @@
 <% @page_title = "Edit Vacation Request" %>
 
+<% content_for :left_bar do %>  
+	<%= render(:partial => "layouts/leftBar")%>
+<% end %>
+
 <%= link_to("<< Back to List", {:controller => "vacation_request", :action => "list"})%>
 
 <div>

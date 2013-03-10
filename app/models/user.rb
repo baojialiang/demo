@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates_length_of :last_name, :within => 0..50
   
   validates_length_of :password, :within => 6..25, :on => :create
-  
+  validates_confirmation_of :password
 
   ############## before save and after save ####################
   before_save :create_hashed_password

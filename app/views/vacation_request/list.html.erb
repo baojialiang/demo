@@ -1,5 +1,9 @@
 <% @page_title = "Vacation Request List" %>
 
+<% content_for :left_bar do %>  
+	<%= render(:partial => "layouts/leftBar")%>
+<% end %>
+
 <div>
 	<h2>Vacations Requests list</h2>
 	<div><%= link_to("create a new vacation request", {:action => "new"})	%></div>
@@ -25,5 +29,11 @@
 		</tr>
 		<% end %>
 	</table>
+	
+<div>
+	
+	<%= render(:partial => "layouts/pagination")%>
+
+</div>
 	
 </div>

@@ -15,7 +15,8 @@
   background: #993120; color: #FFFFFF; }
 #header h1 { margin: 0; padding: 0; }
 #wrapper {width:970px; margin:auto}
-#main { min-height: 500px; background: #BBD8E9; padding-top:15px; }
+#main { min-height: 500px; background: #BBD8E9; }
+
 #navigation { float: left; width: 180px; min-height: 480px; padding: 10px; 
   background: #94B26F; color: #4C2516; }
 #content { padding: 10px; }
@@ -26,10 +27,20 @@ table { border-collapse: collapse; }
 table tr th, table tr td { vertical-align: top; text-align: left; 
   padding: 3px; }
   
+  /*
 #notice_info, #notice_error {text-align: center; width:300px; 
 							background-color:#84D595; margin:auto; padding:10px 10px}
 #notice_info {color:green; border:2px solid #008000}
 #notice_error {color:red; border:2px solid #FF0000}
+*/
+
+.alert {text-align:center}
 .identify {width:90%; text-align:right}
-.left{float:left; width:25%}
-.right{float:left; width:65%}
+#left{float:left; width:25%}
+#left li {padding: 5px 10px}
+#right{float:left; width:65%}
+.table {font-size: 14px}
+.redirect_button a {color:#000000}
+.logo_image {width:120px}
+#sidebar_logo {padding:15px 15px 15px 30px}
+

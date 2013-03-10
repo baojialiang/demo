@@ -12,26 +12,22 @@
 	<div id="header">
 		<h1>Demo || <%= @page_title || "admin area" %></h1>
 	</div>
-	<div id="main">
+	<div id="main" class="clearfix">
 		<% if !flash[:notice_info].blank? %>
-			<div id="notice_info"><%= flash[:notice_info] %></div>
+			<div id="notice_info" class="alert alert-success"><%= flash[:notice_info] %></div>
 		<% elsif !flash[:notice_error].blank? %>
-			<div id = "notice_error"><%= flash[:notice_error] %></div>
+			<div id="notice_error" class="alert alert-error"><%= flash[:notice_error] %></div>
 		<% end %>
-		<div class="identify">Logged in as: <%= session[:username]%></div>
-		<div class="container-fluid" id="content">
-			<div class="row-fluid">
-				<div class="left">
-					<ul>
-						<li><%=	link_to("my vacation record", :controller => "vacation")	%></li>
-						<li><%=	link_to("new vacation request", :controller => "vacation_request")%></li>
-						<li><%=	link_to("team's record", :controller => "vacation_request")	%></li>
-						<li><%=	link_to("Logout", :controller => "access", :action => "logout")	%></li>
-					</ul>
-				</div>
-				<div class="right"><%= yield %></div>
-			</div>
+		
+		<% if session[:username] %>
+			<div class="identify">Logged in as: <%= session[:username]%></div>
+		<% end %>
+		
+		<div id="left">
+			<div>&nbsp;</div>
+			<%= yield :left_bar %> 
 		</div>
+		<div id="right"><%= yield %></div>
 	</div>
 	<div id="footer">
 		<div id="copyright">

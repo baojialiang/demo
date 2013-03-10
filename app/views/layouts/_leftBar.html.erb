@@ -1,0 +1,10 @@
+<div id="sidebar_logo">
+	<%= image_tag('logo/CB.jpg', :class => "logo_image")%>
+</div>
+
+<ul>
+	<li><%=	link_to("my vacation record", :controller => "vacation", :action => "list") %></li>
+	<li><%=	link_to("new vacation request", :controller => "vacation_request", :action => "new") %></li>
+	<li><%=	link_to("team's record", :controller => "vacation_request" , :action => "all")	%></li>
+	<li><%=	link_to("Logout", :controller => "access", :action => "logout")	%></li>
+</ul>

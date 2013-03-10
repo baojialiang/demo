@@ -12,9 +12,17 @@
 			<td><%= password_field_tag(:password) %></td>			
 		</tr>
 		<tr>
-			<td></td>
-			<td><%= submit_tag("Login In") %></td>			
+			<td><%= submit_tag("Sign in") %></td>
+			<td>
+				<button class="redirect_button">
+					<%=	link_to("Register", :controller => "user", :action => "new")	%>
+				</button>
+			</td>			
 		</tr>
+
 	</table>
 	<% end %>
+	<div class = "options">
+		<%= link_to("See team's vacation record", :controller => "vacation", :action => "list") %>
+	</div>
 </div>
