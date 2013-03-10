@@ -12,7 +12,7 @@ class VacationRequest < ActiveRecord::Base
   
   validates :user, :presence => true
   
-  validates_inclusion_of :user, :in => User.all, :message => " is not valid"
+  #validates_inclusion_of :user, :in => User.all, :message => " is not valid"
   
   validates_numericality_of :request_hours, :less_than_or_euqal_to => :remain_hours, 
                             :greater_than => 0, :only_integer => true
