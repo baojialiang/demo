@@ -6,7 +6,7 @@
 <%= link_to("<< Back to List", {:controller => "vacation_request", :action => "list"})%>
 
 <div>
-	<h2>Create vacation</h2>
+	<h2>Vacation request</h2>
 	<%= form_for(:vacation_request, :url => {:action => "create"}) do |f|	%>
 		<%= render(:partial => "newEditForm", :locals => {:f => f})%>
 		

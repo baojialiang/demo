@@ -19,8 +19,4 @@ jQuery(document).ready(function(){
 	jQuery(".pagination.disabled").click(function(){
 		return false;
 	});
-	jQuery(".redirect_button").click(function() {
-	    window.location.href = "/user/new";
-	    return false;
-	});
 });
