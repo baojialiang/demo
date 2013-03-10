@@ -35,29 +35,40 @@ class VacationRequestController < ApplicationController
   
   def new
     vacation = Vacation.find_by_user_id(session[:user_id])
-    if vacation.remain_hours > 0
-      flash[:notice_info] = "You have #{vacation.remain_hours} hours"
+    
+    if !flash[:notice_error].blank?
+      
+    elsif vacation.remain_hours > 0
+       flash[:notice_info] = "You have #{vacation.remain_hours} hours"
     else
-      flash[:notice_warning] = "You have used all vacation hours"
+       flash[:notice_warning] = "You have used all vacation hours"
     end
+
     @vacation_request = VacationRequest.new
   end
   
   def create
     vacation_request = VacationRequest.new(params[:vacation_request])
     user = User.find(session[:user_id])
-    user.vacation.remain_hours -= vacation_request.request_hours
-    vacation_request.remain_hours = user.vacation.remain_hours
-    user.vacation_requests << vacation_request
-    
-    if user.vacation.save && user.vacation_requests
+    if !vacation_request.request_hours.blank? && !vacation_request.leave_text.blank?
+        user.vacation.remain_hours -= vacation_request.request_hours
+        vacation_request.remain_hours = user.vacation.remain_hours
+        user.vacation_requests << vacation_request
+    else
+        flash[:notice_error] = "request hours or content cannot be blank"
+        redirect_to(:action => "new")
+        return
+    end
+
+    if vacation_request.save && user.vacation.save
       flash[:notice_info] = "vacation requested"
       redirect_to(:action => "list")
+      return
     else
-      #flash[:notice_error] = "vacation cannot be requested now, try again later"
       display_error_message(user.vacation)
       display_error_message(vacation_request)
-      render("new")
+      redirect_to(:action => "new")
+      return
     end
   end
 

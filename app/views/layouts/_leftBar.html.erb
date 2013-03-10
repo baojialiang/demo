@@ -6,8 +6,9 @@
 	<li><%=	link_to("my vacation record", :controller => "vacation_request", :action => "list", :id => session[:user_id]) %></li>
 	<li><%=	link_to("new vacation request", :controller => "vacation_request", :action => "new") %></li>
 	<li><%=	link_to("team's record", :controller => "user" , :action => "list")	%></li>
+	<li><%=	link_to("vacation chart", :controller => "access" , :action => "menu")	%></li>
 	<li>
-		<%= link_to("baojialiang's demo", :controller => "access", :action => "help")	%>
+		<%= link_to("author help", :controller => "access", :action => "help")	%>
 	</li>
 	<li>
 		<% if session[:user_id] %>

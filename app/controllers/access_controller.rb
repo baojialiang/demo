@@ -24,7 +24,8 @@ class AccessController < ApplicationController
   end
   
   def menu
-    
+    @vacation = Vacation.find_by_user_id(session[:user_id])
+    @chart_data =  @vacation.to_json
   end
   
   def attempt_login

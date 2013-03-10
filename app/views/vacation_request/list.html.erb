@@ -24,8 +24,10 @@
 			<td><%= vacation_request.created_at.to_s(:db) %></td>
 			<td>
 				<%= link_to("Show", {:controller => "vacation_request", :action => 'show', :id => vacation_request.id})%>
-				<%= link_to("Edit", {:action => 'edit', :id => vacation_request.id})%>
-				<%= link_to("Delete", {:action => 'delete', :id => vacation_request.id})%>
+				<% if session[:user_id] == vacation_request.user.id %>
+					<%= link_to("Edit", {:action => 'edit', :id => vacation_request.id})%>
+					<%= link_to("Delete", {:action => 'delete', :id => vacation_request.id})%>
+				<% end %>
 			</td>
 		</tr>
 		<% end %>

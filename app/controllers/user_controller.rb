@@ -15,8 +15,8 @@ class UserController < ApplicationController
     @user.vacation = Vacation.new
     
     if @user.save
-      flash[:notice_info] = "user successfully registered"
-      redirect_to(:action => "list")
+      flash[:notice_info] = "user successfully registered, login please"
+      redirect_to(:controller => "access", :action => "list")
     else
       display_error_message @user
       render("new")

@@ -1,5 +1,11 @@
-<% @page_title = "menu" %>
+<% @page_title = "vacation chart" %>
+
+<%= raw '<script type="text/javascript">' + 'var chart_data =' + @chart_data + ' </script>' %>
+<%= javascript_include_tag "highcharts" %>
+<%= javascript_include_tag "pie_chart" %>
 
 <% content_for :left_bar do %>  
 	<%= render(:partial => "layouts/leftBar")%>
 <% end %>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
