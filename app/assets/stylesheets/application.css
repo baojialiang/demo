@@ -34,13 +34,16 @@ table tr th, table tr td { vertical-align: top; text-align: left;
 #notice_error {color:red; border:2px solid #FF0000}
 */
 
-.alert {text-align:center}
-.identify {width:90%; text-align:right}
+#notice_info, #notice_error {text-align:center }
+#info_ul { margin:auto; width:350px }
+#info_ul li {text-align:left;}
+
+.identify {width:90%; text-align:right; padding:20px 20px}
 #left{float:left; width:25%}
 #left li {padding: 5px 10px}
 #right{float:left; width:65%}
 .table {font-size: 14px}
 .redirect_button a {color:#000000}
 .logo_image {width:120px}
-#sidebar_logo {padding:15px 15px 15px 30px}
+#sidebar_logo {padding:0px 15px 15px 30px}
 

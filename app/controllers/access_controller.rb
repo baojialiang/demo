@@ -1,7 +1,7 @@
 class AccessController < ApplicationController
   layout "admin"
   
-  before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout]
+  before_filter :confirm_logged_in, :except => [:login, :attempt_login, :logout, :help]
   
   def index
     menu
@@ -19,12 +19,12 @@ class AccessController < ApplicationController
     #logout form
     session[:user_id] = nil
     session[:username] = nil
-    flash[:notice_info] = "You have been logged out"
+    flash[:notice_info] = "You have logged out"
     redirect_to(:action => "login")
   end
   
   def menu
- 
+    
   end
   
   def attempt_login
@@ -38,6 +38,10 @@ class AccessController < ApplicationController
       flash[:notice_error] = "Invalid Email/Password"
       redirect_to(:action => "login")
     end
+  end
+  
+  def help
+    
   end
   
 end

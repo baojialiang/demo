@@ -7,6 +7,7 @@
 <div>
 	<h2>Vacations Requests list</h2>
 	<div><%= link_to("create a new vacation request", {:action => "new"})	%></div>
+	<div id="remain_hours">Remain hours: <%= @vacation.remain_hours %></div>
 	<table class="table">
 		<tr>
 			<th>Name</th>

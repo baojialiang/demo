@@ -1,29 +1,29 @@
 <% @page_title = "user list"%>
 
-<div>
-	<%= link_to("register a new user", {:action => "new"})	%>
-</div>
-<div>
-	<%= link_to("create a vacation request", {:controller => "vacation_request", :action => "new"})%>
-</div>
+<% content_for :left_bar do %>  
+	<%= render(:partial => "layouts/leftBar")%>
+<% end %>
 
 <div>
 	<h2>user list</h2>
 	
-	<table>
+	<table class="table">
 		<tr>
-			<th>email</th>
-			<th>first name</th>
-			<th>last name</th>
-			<th>create time</th>
-			
+			<th>Email</th>
+			<th>User name</th>
+			<th>Remain hours</th>
+			<th>Action</th>
 		</tr>
 		<% @users.each do |user|%>
 		<tr>
 			<td><%= user.email  %></td>
-			<td><%= user.first_name %></td>
-			<td><%= user.last_name %></td>
-			<td><%= user.created_at.to_s(:db) %></td>
+			<td><%= user.first_name + " " + user.last_name %></td>
+			<td><%= user.vacation.remain_hours %></td>
+			<td><%= link_to("vacation history", :controller => "vacation_request", 
+												:action => "list", 
+												:id => user.id
+												)%>
+			</td>
 		</tr>
 		<% end %>
 	</table>

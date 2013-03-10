@@ -10,15 +10,24 @@
 <body>
 <div id="wrapper">
 	<div id="header">
-		<h1>Demo || <%= @page_title || "admin area" %></h1>
+		<h1><%= @page_title || "admin area" %></h1>
 	</div>
 	<div id="main" class="clearfix">
-		<% if !flash[:notice_info].blank? %>
-			<div id="notice_info" class="alert alert-success"><%= flash[:notice_info] %></div>
-		<% elsif !flash[:notice_error].blank? %>
-			<div id="notice_error" class="alert alert-error"><%= flash[:notice_error] %></div>
-		<% end %>
-		
+			<% if !flash[:notice_info].blank? %>
+				<div id="notice_info" class="alert alert-success">
+					<%= raw(flash[:notice_info]) %>
+				</div>
+			<% end %>	
+			<% if !flash[:notice_error].blank? %>
+				<div id="notice_error" class="alert alert-error">
+					<%= raw(flash[:notice_error]) %>
+				</div>
+			<% end %>
+			<% if !flash[:notice_warning].blank? %>
+				<div id="notice_error" class="alert alert-error">
+					<%= raw(flash[:notice_warning]) %>
+				</div>
+			<% end %>
 		<% if session[:username] %>
 			<div class="identify">Logged in as: <%= session[:username]%></div>
 		<% end %>
@@ -31,7 +40,7 @@
 	</div>
 	<div id="footer">
 		<div id="copyright">
-			<p>&copy; baojialiang's demo</p>
+			<p>&copy; <%= link_to("baojialiang's demo", :controller => "access", :action => "help") %></p>
 		</div>
 	</div>
 </div>

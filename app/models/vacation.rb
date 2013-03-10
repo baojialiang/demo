@@ -7,6 +7,6 @@ class Vacation < ActiveRecord::Base
   # v = Vacation.new(:leave_text => "hello", :remain_hours => 20, :request_hours => 10)
   
   validates :remain_hours, :presence => true
-  validates_numericality_of :remain_hours, :greater_than => 0, :only_integer => true
+  validates_numericality_of :remain_hours, :greater_than_or_equal_to => 0, :only_integer => true
   
 end
