@@ -1,6 +1,6 @@
 Demo::Application.routes.draw do
   
-  root :to => "access#login"
+  #root :to => "access#login"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
