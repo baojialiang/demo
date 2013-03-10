@@ -4,6 +4,6 @@ class ChangePasswordLength < ActiveRecord::Migration
   end
 
   def down
-    change_column :users, :password, :string, :limit => 20, :null => false
+    #change_column :users, :password, :string, :limit => 20, :null => false
   end
 end

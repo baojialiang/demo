@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 
@@ -11,6 +11,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'thin'
 end
 
 # Gems used only for assets and not required
