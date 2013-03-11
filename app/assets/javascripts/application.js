@@ -12,11 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
 
-//pagination disable
-jQuery(document).ready(function(){
-	jQuery(".pagination.disabled").click(function(){
-		return false;
-	});
-});

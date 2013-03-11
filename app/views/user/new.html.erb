@@ -1,10 +1,7 @@
-<% if !flash[:notice].blank?	%>
-	<div class = "notice"><%= flash[:notice] %></div>
-<% end %>
-
-
-<%= link_to("<< Back to login", {:controller => "access", :action => "login"})%>
-
+<% @page_title = "Register" %>
+<div>
+	<%= link_to("<< Back to login", {:controller => "access", :action => "login"})%>
+</div>
 <div>
 	<h2>Register user</h2>
 	<%= form_for(:user, :url => {:action => "create"}) do |f|	%>
@@ -23,10 +20,10 @@
 				<td> <%= text_field(:user ,:last_name) %></td>
 			</tr>	
 			<th>Password</th>
-				<td> <%= password_field(:user ,:password, :size => 20, :maxlength => 10) %></td>
+				<td> <%= password_field(:user ,:password, :size => 20) %></td>
 			</tr>	
 			<th>Password again</th>
-				<td> <%= password_field(:user ,:password_confirmation, :size => 20, :maxlength => 10) %></td>
+				<td> <%= password_field(:user ,:password_confirmation, :size => 20) %></td>
 			</tr>
 
 		</table>
