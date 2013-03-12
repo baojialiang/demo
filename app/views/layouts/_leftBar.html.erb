@@ -10,12 +10,19 @@
 	<li>
 		<%= link_to("author explantion", :controller => "access", :action => "help")	%>
 	</li>
-	<li>
-		<% if session[:user_id] %>
+	
+	<% if session[:user_id] %>
+		<li>
 			<%=	link_to("Logout", :controller => "access", :action => "logout")	%>
-		<% else %>
+		</li>
+	<% else %>
+		<li>
 			<%=	link_to("Login", :controller => "access", :action => "login")	%>
-		<% end %>
-	</li>
+		</li>
+		<li>
+			<%=	link_to("Register", :controller => "user", :action => "new")	%>
+		</li>
+	<% end %>
+	
 
 </ul>
