@@ -42,7 +42,7 @@ class UserController < ApplicationController
     email = params[:email]
     user = User.find_by_email(email)
     if !user.nil?
-      UserMailer.forget_password(user)
+      UserMailer.forget_password(user).deliver
       flash[:notice_info] = "email has already been sent, please check your mailbox"
       redirect_to(:controller => "access", :action => "login")
     else
